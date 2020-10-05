@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/constants.dart';
 import 'package:ecommerce_app/screen/components.dart';
 import 'package:ecommerce_app/screen/login.dart';
+import 'package:ecommerce_app/screen/mainmenu.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -175,7 +176,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: RaisedButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => new MainMenuScreen()));
+                    },
                     child: Text("SIGN UP"),
                     color: cModeDarkColorButtom,
                     textColor: cModeDarkColorButtonText,
