@@ -11,3 +11,6 @@ const cModeDarkColorTextBoxLabel = Color(0xFFABB4BD);
 
 //size
 const cSizeTextHeader = 34.0;
+
+//url api
+const apiUrl = "http://172.20.10.3:3001/";

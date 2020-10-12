@@ -1,5 +1,8 @@
+import 'package:ecommerce_app/bloc/authenticationBloc.dart';
+import 'package:ecommerce_app/screen/mainmenu.dart';
 import 'package:ecommerce_app/screen/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,8 +10,11 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  //add bloc to check status login
+  final authBloc = AuthenticationBloc();
   @override
   Widget build(BuildContext context) {
+    authBloc.onCheckLogin();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -27,7 +33,19 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SignUpScreen(),
+      home: BlocListener(
+        bloc: authBloc,
+        listener: (context, AuthenticationState state){
+          if(state is LoggedInState){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => 
+              MainMenuScreen()
+            ));
+          }else {
+            SignUpScreen();
+          }
+        },
+        child:Container(),
+      )
     );
   }
 }
