@@ -3,7 +3,7 @@ import 'dart:convert';
 class ResultModel{
   final int responsecode;
   final String responsemessage;
-  final List responsedata;
+  final dynamic responsedata;
 
   ResultModel({this.responsecode, this.responsemessage, this.responsedata});
 

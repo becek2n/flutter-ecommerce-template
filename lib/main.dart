@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
             SignUpScreen();
           }
         },
-        child:Container(),
+        child:SignUpScreen(),
       )
     );
   }

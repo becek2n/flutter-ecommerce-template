@@ -30,8 +30,12 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>{
         //give a delay for loading
         await Future.delayed(const Duration(seconds: 3));
         //execute api
-        var url = "user/" + event.user.trim() + "/" + event.password.trim();
-        final data = await APIWeb().load(UserRepository.getLogin(url));
+        var url = "login";
+        Map<String, dynamic> jsonBody = {
+          'email': event.user.trim().toString(),
+          'password': event.password.trim().toString(),
+        };
+        final data = await APIWeb().post(UserRepository.post(url, jsonBody));
         //retrieve data
         yield AuthenticationState(userModel: data);
       }catch(e){

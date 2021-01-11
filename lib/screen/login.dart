@@ -40,6 +40,28 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  //loading widget
+  void messageDialog(BuildContext context, String message){
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context){
+        return CupertinoAlertDialog(
+          title: Text(message),
+          actions: [
+            CupertinoDialogAction(
+              isDefaultAction: true,
+              child: Text("Ok"),
+              onPressed: (){
+                Navigator.of(context, rootNavigator: true).pop();
+              },
+            ),
+          ],
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener(
@@ -58,6 +80,10 @@ class _LoginScreenState extends State<LoginScreen> {
         }else if (state is LoadingState){
           //show loading
           WidgetsBinding.instance.addPostFrameCallback((_) => loadingDialog(context)); 
+        }else if(state is GetFailureState){
+          Navigator.of(context, rootNavigator: true).pop();
+          WidgetsBinding.instance.addPostFrameCallback((_) => messageDialog(context, "Upps... " + state.error)); 
+
         }
       },
       child: Scaffold(

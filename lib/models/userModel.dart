@@ -32,19 +32,19 @@ class UserModel{
   //mapping json data
   factory UserModel.fromJSON(Map<String, dynamic> jsonMap){
     final data = UserModel(
-      id: jsonMap["ID"],
-      userName: jsonMap["UserName"],
-      password: jsonMap["Password"],
-      fullName: jsonMap["FullName"],
-      email: jsonMap["Email"],
-      phone: jsonMap["Phone"],
-      address: jsonMap["Address"],
-      city: jsonMap["City"],
-      countryCode: jsonMap["CountryCode"],
-      photo: jsonMap["Photo"],
-      roleID: jsonMap["RoleID"],
-      dateCreated: jsonMap["DateCreated"],
-      createdBy: jsonMap["CreatedBy"],
+      id: jsonMap["id"],
+      userName: jsonMap["firstName"],
+      password: jsonMap["lastName"],
+      fullName: jsonMap["firstName"] + jsonMap["lastName"],
+      email: jsonMap["email"],
+      // phone: jsonMap["Phone"],
+      // address: jsonMap["Address"],
+      // city: jsonMap["City"],
+      // countryCode: jsonMap["CountryCode"],
+      // photo: jsonMap["Photo"],
+      // roleID: jsonMap["RoleID"],
+      // dateCreated: jsonMap["DateCreated"],
+      // createdBy: jsonMap["CreatedBy"],
     );
     return data;
   }
