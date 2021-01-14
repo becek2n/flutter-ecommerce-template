@@ -2,10 +2,15 @@ import 'package:ecommerce_app/bloc/authenticationBloc.dart';
 import 'package:ecommerce_app/screen/mainmenu.dart';
 import 'package:ecommerce_app/screen/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+    .then((_) {
+      runApp(new MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
